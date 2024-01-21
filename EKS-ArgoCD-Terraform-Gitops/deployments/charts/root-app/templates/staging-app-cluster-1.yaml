@@ -14,7 +14,7 @@ spec:
     targetRevision: HEAD
   destination:
     server: https://kubernetes.default.svc
-    namespace: staging-app-cluster-1
+    namespace: blue-green-rollout
 
 {{- if .Values.rootApp.noSyncPolicy }}
   syncPolicy: null
