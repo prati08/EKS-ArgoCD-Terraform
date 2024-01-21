@@ -1,0 +1,17 @@
+automatedDefaultSyncPolicy:
+  automated: {}
+
+
+automatedCustomSyncPolicy:
+  automated: {
+    prune: true,
+    selfHeal: true,
+  }
+
+manualSyncPolicy: "{}"
+
+
+prodBlueGreenApp:
+    noSyncPolicy: false
+    defaultPolicy: true
+    customPolicy: false
