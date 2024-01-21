@@ -5,7 +5,7 @@ metadata:
   finalizers:
   - resources-finalizer.argocd.argoproj.io
 spec:
-  project: default
+  project: blue-green-rollout
   source:
     repoURL: git@github.com:prati08/EKS-ArgoCD-Terraform.git
     path: EKS-ArgoCD-Terraform-Gitops-Service/deployments/charts/staging/
