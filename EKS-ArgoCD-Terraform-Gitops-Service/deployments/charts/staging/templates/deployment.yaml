@@ -25,7 +25,7 @@ spec:
         - /bin/sh
         - -c
         - |
-           echo '<h1 style="font-size: 6rem; color:blue">Hello Blue</h1>' > /data/index.html
+           echo '<h1 style="font-size: 6rem; color:blue">Hello Green</h1>' > /data/index.html
         volumeMounts:
         - name: emptydir
           mountPath: /data
