@@ -1,6 +1,8 @@
 kind: Application
 metadata:
   name: argo-cd
+  finalizers:
+  - resources-finalizer.argocd.argoproj.io
 spec:
   project: default
   source:
