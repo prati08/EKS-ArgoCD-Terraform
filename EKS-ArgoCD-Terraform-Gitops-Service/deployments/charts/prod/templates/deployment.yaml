@@ -4,7 +4,7 @@ metadata:
   name: blue-green-rollout
   labels:
     app: testing
-  namespace: blue-green-rollout
+  namespace: blue-green-rollout-prod
 spec:
   revisionHistoryLimit: 8
   replicas: 2
