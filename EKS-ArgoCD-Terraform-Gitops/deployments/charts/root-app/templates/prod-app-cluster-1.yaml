@@ -1,0 +1,25 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: prod-app-cluster-1
+  annotations:
+    argocd.argoproj.io/sync-wave: "0"
+  finalizers:
+  - resources-finalizer.argocd.argoproj.io
+spec:
+  project: default
+  source:
+    repoURL: git@github.com:prati08/EKS-ArgoCD-Terraform.git
+    path: EKS-ArgoCD-Terraform/EKS-ArgoCD-Terraform-Gitops/single_cluster/01-prod/charts/prod
+    targetRevision: HEAD
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: prod-app-cluster-1
+
+{{- if .Values.rootApp.noSyncPolicy }}
+  syncPolicy: null
+{{- else if .Values.rootApp.defaultPolicy }}
+  syncPolicy: {{ toJson .Values.automatedDefaultSyncPolicy }}
+{{- else if .Values.rootApp.customPolicy }}
+  syncPolicy: {{ toJson .Values.automatedCustomSyncPolicy }}
+{{- end }}
