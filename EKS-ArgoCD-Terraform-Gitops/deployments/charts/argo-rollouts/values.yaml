@@ -1,0 +1,6 @@
+argo-rollouts:
+  notifications:
+    enabled: false
+  server:
+    extraArgs:
+      - --insecure
