@@ -9,6 +9,8 @@ spec:
     repoURL: git@github.com:prati08/EKS-ArgoCD-Terraform.git
     path: EKS-ArgoCD-Terraform-Gitops/deployments/charts/argo-cd/
     targetRevision: HEAD
+    helm:
+      version: v3
   destination:
     server: https://kubernetes.default.svc
     namespace: argocd
