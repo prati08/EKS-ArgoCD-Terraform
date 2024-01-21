@@ -7,7 +7,7 @@ metadata:
 spec:
   project: default
   source:
-    repoURL: https://github.com/arthurk/argocd-example-install.git
+    repoURL: https://github.com/prati08/EKS-ArgoCD-Terraform.git
     path: charts/root-app/
     targetRevision: HEAD
   destination:
