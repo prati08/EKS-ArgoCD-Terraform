@@ -1,7 +1,7 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: Staging-Blue-Green-Rollout-App
+  name: staging-blue-green-rollout-app
   annotations:
     argocd.argoproj.io/sync-wave: "3"
   finalizers:
