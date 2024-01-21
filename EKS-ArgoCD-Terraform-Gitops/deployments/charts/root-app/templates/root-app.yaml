@@ -7,12 +7,17 @@ metadata:
 spec:
   project: default
   source:
-    repoURL: https://github.com/prati08/EKS-ArgoCD-Terraform.git
-    path: charts/root-app/
+    repoURL: git@github.com:prati08/EKS-ArgoCD-Terraform.git
+    path: EKS-ArgoCD-Terraform-Gitops/deployments/charts/root-app/
     targetRevision: HEAD
   destination:
     server: https://kubernetes.default.svc
     namespace: argocd
-  syncPolicy:
-    automated:
-      selfHeal: true
+
+{{- if .Values.rootApp.noSyncPolicy }}
+  syncPolicy: null
+{{- else if .Values.rootApp.defaultPolicy }}
+  syncPolicy: {{ toJson .Values.automatedDefaultSyncPolicy }}
+{{- else if .Values.rootApp.customPolicy }}
+  syncPolicy: {{ toJson .Values.automatedCustomSyncPolicy }}
+{{- end }}
