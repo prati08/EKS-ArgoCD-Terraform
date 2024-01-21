@@ -4,7 +4,7 @@ metadata:
   name: blue-green-rollout
   labels:
     app: testing
-  namespace: blue-green-rollout
+  namespace: argocd
 spec:
   replicas: 1
   selector:
