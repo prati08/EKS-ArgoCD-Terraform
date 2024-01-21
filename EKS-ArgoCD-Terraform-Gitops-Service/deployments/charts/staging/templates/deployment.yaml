@@ -1,0 +1,44 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Rollout
+metadata:
+  name: blue-green-rollout
+  labels:
+    app: testing
+  namespace: blue-green-rollout
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: testing
+  template:
+    metadata:
+      labels:
+        app: testing
+    spec:
+      volumes:
+      - name: emptydir
+        emptyDir: {}
+      initContainers:
+      - name: temp
+        image: busybox
+        command:
+        - /bin/sh
+        - -c
+        - |
+           echo '<h1 style="font-size: 6rem; color:blue">Hello Blue</h1>' > /data/index.html
+        volumeMounts:
+        - name: emptydir
+          mountPath: /data
+      containers:
+      - name: nginx
+        image: nginx:alpine
+        ports:
+        - containerPort: 80
+        volumeMounts:
+        - name: emptydir
+          mountPath: /usr/share/nginx/html
+  strategy:
+    blueGreen:
+      activeService: active-svc
+      previewService: preview-svc
+      autoPromotionEnabled: false
