@@ -6,6 +6,7 @@ metadata:
     app: testing
   namespace: blue-green-rollout
 spec:
+  revisionHistoryLimit: 4
   replicas: 1
   selector:
     matchLabels:
