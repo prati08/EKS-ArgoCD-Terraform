@@ -55,14 +55,18 @@ Installation of argocd in above EKS Cluster(only first time execution later argo
             - helm dep update charts/argo-cd/
      
   once argocd is installed we can perform below steps to verify argocd is installed.
+  
      1. check argocd status kubectl -n argocd rollout status deployment argo-cd-argocd-server
      2. Once step 1 is passed, we can get password of argocd admin user using below command
+     
           kubectl get secret argocd-initial-admin-secret -n argocd -o yaml
-     3. intially password is base64 encoded, we can decode to use via ui or cli
-    
+          
+     3. intially password is base64 encoded, we can decode to use via ui or cli  
      4. once the argocd is installed we need to add below application
+     
                cd  EKS-ArgoCD-Terraform-Gitops/deployments/charts/
                helm template root-app/ | kubectl apply -f -
+
 
 Application Mananged via Argocd:
 ===========
