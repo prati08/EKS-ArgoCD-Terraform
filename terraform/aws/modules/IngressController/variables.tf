@@ -1,0 +1,6 @@
+variable "EKS_CLUSTER_NAME" {}
+variable "EKS_CLUSTER_ENDPOINT" {}
+variable "EKS_CLUSTER_CERTIFICATE_AUTHORITY" {}
+variable "EKS_CLUSTER_IDENTITY" {}
+variable "EKS_NODE_GROUP" {}
+variable "PROJECT_NAME" {}
