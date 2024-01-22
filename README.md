@@ -3,10 +3,11 @@
 Problem Statement: 
 =====================
 
-  1. Create EKS Cluster with the help of below aws resource
+  1. Create EKS Cluster with the help of below aws resource.
        1. VPC(with Public and Private subnet)
        2. with 1 node-group using above network configuration
        3. Deployment Tools: Terraform
+       4. ALB (for load balancing l7 traffic accross active/preview service.)
     
   2. Deploy ArgoCD and Argo Rollout in EKS Cluster Mentioned above.
   3. Create Gitops Pipeline to deploy & manage Nginx Application for blue-green upgrade Strategy. 
@@ -26,7 +27,7 @@ Installation Steps:
 
   Installation of EKS Cluster along with aws service using Terraform.
   ==========
-    Follow the below steps to Install the Terraform and another dependency.
+    Follow the below steps to Install the Terraform and another aws resource dependency.
     1. Clone the repo
       git clone https://github.com/prati08/EKS-ArgoCD-Terraform.git
     2. Let's install dependency to deploy the application
