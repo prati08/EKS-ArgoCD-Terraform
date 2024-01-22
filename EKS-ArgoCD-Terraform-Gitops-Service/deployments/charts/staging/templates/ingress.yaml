@@ -5,11 +5,17 @@ metadata:
   namespace: blue-green-rollout
   annotations:
     alb.ingress.kubernetes.io/scheme: internet-facing
+    alb.ingress.kubernetes.io/target-type: instance
+    # alb.ingress.kubernetes.io/group.order: '1'
+    # alb.ingress.kubernetes.io/group.name: myapp
+    # alb.ingress.kubernetes.io/listen-ports: '[{"HTTP": 80}, {"HTTPS":443}]'
+    # alb.ingress.kubernetes.io/ssl-redirect: '443'
+    # alb.ingress.kubernetes.io/certificate-arn: ""
 spec:
   ingressClassName: alb
   rules:
 ###### bluegreen.live.com will be a enduser facing web URL #######
-  - host: bluegreen.live.com
+  - host: "*.amazonaws.com"
     http:
       paths:
       - path: /
@@ -20,10 +26,10 @@ spec:
             port:
               number: 80
 ###### bluegreen.staging.com will be internal testing web URL (Like for new app version fucntionality for QA testers) ######
-  - host: bluegreen.staging.com
+  - host: "*.amazonaws.com"
     http:
       paths:
-      - path: /
+      - path: /staging
         pathType: Prefix
         backend:
           service:
