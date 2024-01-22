@@ -41,17 +41,17 @@ Installation Steps:
     
     Note: (in this project we are locally storing the terraform state file, instead of stoing in s3 bucket.)
   
-Installation of argocd and argo rollout in above EKS Cluster(only first time execution later argocd will manage argocd).
+Installation of argocd in above EKS Cluster(only first time execution later argocd will manage argocd).
 ==========
   Assuming above repo is cloned:
 
   1. Create Namespace argocd in above eks cluster
   2. cd to EKS-ArgoCD-Terraform-Gitops/deployments directory
   3. deployments => helm -n argocd install argo-cd charts/argo-cd/
-      Before Performing helm install first we need to add the argocd repo
-     =======
-      helm repo add argo-cd https://argoproj.github.io/argo-helm - one time only
-      helm dep update charts/argo-cd/
+      Note:
+         Before Performing helm install first we need to add the argocd repo
+         helm repo add argo-cd https://argoproj.github.io/argo-helm - one time only
+         helm dep update charts/argo-cd/
   once argocd is installed we can perform below steps to verify argocd is installed.
      1. check argocd status kubectl -n argocd rollout status deployment argo-cd-argocd-server
      2. Once step 1 is passed, we can get password of argocd admin user using below command
@@ -61,7 +61,10 @@ Installation of argocd and argo rollout in above EKS Cluster(only first time exe
      4. once the argocd is installed we need to add below application
                cd  EKS-ArgoCD-Terraform-Gitops/deployments/charts/
                helm template root-app/ | kubectl apply -f -
-     5. that it, internally gitops created in apps-of-apps of pattern, where it will sync below application automatically from EKS-ArgoCD-Terraform-Gitops repo.
+
+Application Mananged via Argocd:
+===========
+     1. that it, internally gitops pipeline is created in apps-of-apps of pattern, where it will sync below application automatically from EKS-ArgoCD-Terraform-Gitops repo.
           sync sequence:
                1. argo-cd(self-managed)
                2. argo-rollout(for blue-green upgrade strategy)
