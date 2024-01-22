@@ -1,0 +1,32 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name : blue-green-ingress
+  namespace: blue-green-rollout
+  annotations:
+    alb.ingress.kubernetes.io/scheme: internet-facing
+spec:
+  ingressClassName: alb
+  rules:
+###### bluegreen.live.com will be a enduser facing web URL #######
+  - host: bluegreen.live.com
+    http:
+      paths:
+      - path: /
+        pathType: Prefix
+        backend:
+          service:
+            name: active-svc
+            port:
+              number: 80
+###### bluegreen.staging.com will be internal testing web URL (Like for new app version fucntionality for QA testers) ######
+  - host: bluegreen.staging.com
+    http:
+      paths:
+      - path: /
+        pathType: Prefix
+        backend:
+          service:
+            name: preview-svc
+            port:
+              number: 80
