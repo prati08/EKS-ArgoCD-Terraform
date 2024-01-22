@@ -48,10 +48,10 @@ Installation of argocd in above EKS Cluster(only first time execution later argo
   1. Create Namespace argocd in above eks cluster
   2. cd to EKS-ArgoCD-Terraform-Gitops/deployments directory
   3. deployments => helm -n argocd install argo-cd charts/argo-cd/
-      Note:
-         Before Performing helm install first we need to add the argocd repo
-         helm repo add argo-cd https://argoproj.github.io/argo-helm - one time only
-         helm dep update charts/argo-cd/
+         Note:
+           Before Performing helm install first we need to add the argocd repo
+           helm repo add argo-cd https://argoproj.github.io/argo-helm - one time only
+           helm dep update charts/argo-cd/
   once argocd is installed we can perform below steps to verify argocd is installed.
      1. check argocd status kubectl -n argocd rollout status deployment argo-cd-argocd-server
      2. Once step 1 is passed, we can get password of argocd admin user using below command
