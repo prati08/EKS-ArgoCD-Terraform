@@ -1,6 +1,6 @@
-{{- if .Values.argorollout.deployment }}
-apiVersion: apps/v1
-kind: Deployment
+{{- if and .Values.argorollout.rollout (or .Values.ingress.onprem .Values.ingress.aws )}}
+apiVersion: argoproj.io/v1alpha1
+kind: Rollout
 metadata:
   name: blue-green-rollout
   labels:
@@ -39,4 +39,9 @@ spec:
         volumeMounts:
         - name: emptydir
           mountPath: /usr/share/nginx/html
+  strategy:
+    blueGreen:
+      activeService: active-svc
+      previewService: preview-svc
+      autoPromotionEnabled: false
 {{- end }}

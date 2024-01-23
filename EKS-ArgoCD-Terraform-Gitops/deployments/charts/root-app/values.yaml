@@ -12,6 +12,7 @@ manualSyncPolicy: "{}"
 
 
 rootApp:
+    prod-app-cluster-1: false
     noSyncPolicy: false
     defaultPolicy: true
     customPolicy: false

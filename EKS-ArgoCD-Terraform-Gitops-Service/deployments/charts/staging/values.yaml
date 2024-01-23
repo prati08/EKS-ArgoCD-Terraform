@@ -1,0 +1,7 @@
+ingress:
+    onprem: true
+    aws: false
+
+argorollout:
+    deployment: false
+    rollout: true
