@@ -5,7 +5,7 @@ metadata:
 spec:
   project: default
   source:
-    repoURL: git@github.com:prati08/EKS-ArgoCD-Terraform.git
+    repoURL: https://github.com/prati08/EKS-ArgoCD-Terraform.git
     path: EKS-ArgoCD-Terraform-Gitops/deployments/charts/argo-cd/
     targetRevision: HEAD
   destination:

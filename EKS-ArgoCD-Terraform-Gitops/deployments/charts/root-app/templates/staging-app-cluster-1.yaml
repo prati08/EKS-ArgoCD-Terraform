@@ -9,7 +9,7 @@ metadata:
 spec:
   project: default
   source:
-    repoURL: git@github.com:prati08/EKS-ArgoCD-Terraform.git
+    repoURL: https://github.com/prati08/EKS-ArgoCD-Terraform.git 
     path: EKS-ArgoCD-Terraform-Gitops/single_cluster/01-staging/charts/staging
     targetRevision: HEAD
   destination:
