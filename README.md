@@ -65,7 +65,7 @@ Installation of argocd in above EKS Cluster(only first time execution later argo
      4. once the argocd is installed we need to add below application
      
                cd  EKS-ArgoCD-Terraform-Gitops/deployments/charts/
-               helm template root-app/ | kubectl apply -f -
+               helm template root-app/ | kubectl apply -f - -n argocd
 
 
 Application Mananged via Argocd:
