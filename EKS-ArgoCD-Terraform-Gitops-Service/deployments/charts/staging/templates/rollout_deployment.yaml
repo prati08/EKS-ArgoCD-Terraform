@@ -22,18 +22,20 @@ spec:
         emptyDir: {}
       initContainers:
       - name: temp
-        image: busybox
+        image: nginx:alpine
+        imagePullPolicy: IfNotPresent 
         command:
         - /bin/sh
         - -c
         - |
-           echo '<h1 style="font-size: 6rem; color:blue">Hello Blue</h1>' > /data/index.html
+           echo '<h1 style="font-size: 6rem; color:blue">Hello Green</h1>' > /data/index.html
         volumeMounts:
         - name: emptydir
           mountPath: /data
       containers:
       - name: nginx
         image: nginx:alpine
+        imagePullPolicy: IfNotPresent
         ports:
         - containerPort: 80
         volumeMounts:
