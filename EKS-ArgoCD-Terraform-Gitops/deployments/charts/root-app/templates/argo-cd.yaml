@@ -6,7 +6,7 @@ metadata:
   labels:
     app.kubernetes.io/managed-by: Helm
   annotations:
-    argocd.argoproj.io/sync-wave: "-3"
+    argocd.argoproj.io/hook: PreSync
 spec:
   project: default
   source:
