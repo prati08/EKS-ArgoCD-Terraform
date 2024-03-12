@@ -5,7 +5,7 @@ metadata:
   namespace: as-infra
   labels:
     app.kubernetes.io/managed-by: Helm
-  argocd.argoproj.io/hook: PostSync
+    argocd.argoproj.io/hook: PostSync
 spec:
   project: default
   source:
