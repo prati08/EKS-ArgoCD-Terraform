@@ -6,9 +6,7 @@ metadata:
   labels:
     app.kubernetes.io/managed-by: Helm  
   annotations:
-    argocd.argoproj.io/hook: Presync
-  finalizers:
-  - resources-finalizer.argocd.argoproj.io
+    argocd.argoproj.io/hook: PreSync
 spec:
   project: default
   source:
