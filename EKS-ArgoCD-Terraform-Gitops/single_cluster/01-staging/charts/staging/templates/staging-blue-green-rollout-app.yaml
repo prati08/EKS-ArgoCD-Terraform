@@ -5,6 +5,7 @@ metadata:
   namespace: as-infra
   labels:
     app.kubernetes.io/managed-by: Helm
+  argocd.argoproj.io/hook: Skip
   finalizers:
   - resources-finalizer.argocd.argoproj.io
 spec:
