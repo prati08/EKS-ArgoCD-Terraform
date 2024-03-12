@@ -17,7 +17,7 @@ spec:
     targetRevision: HEAD
   destination:
     server: https://kubernetes.default.svc
-    namespace: argocd
+    namespace: as-infra
   syncPolicy:
   automated:
     prune: true
