@@ -2,6 +2,9 @@ apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
   name: argo-cd
+  namespace: as-infra
+  labels:
+    app.kubernetes.io/managed-by: Helm  
 spec:
   project: default
   source:
@@ -11,11 +14,9 @@ spec:
   destination:
     server: https://kubernetes.default.svc
     namespace: argocd
-
-{{- if .Values.rootApp.noSyncPolicy }}
-  syncPolicy: null
-{{- else if .Values.rootApp.defaultPolicy }}
-  syncPolicy: {{ toJson .Values.automatedDefaultSyncPolicy }}
-{{- else if .Values.rootApp.customPolicy }}
-  syncPolicy: {{ toJson .Values.automatedCustomSyncPolicy }}
-{{- end }}
+  syncPolicy:
+    syncOptions:
+        - CreateNamespace=true
+    automated:
+      selfHeal: true
+      prune: true

@@ -2,6 +2,9 @@ apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
   name: staging-blue-green-rollout-app
+  namespace: as-infra
+  labels:
+    app.kubernetes.io/managed-by: Helm
   finalizers:
   - resources-finalizer.argocd.argoproj.io
 spec:
@@ -13,11 +16,9 @@ spec:
   destination:
     server: https://kubernetes.default.svc
     namespace: argocd
-
-{{- if .Values.stageBlueGreenApp.noSyncPolicy }}
-  syncPolicy: null
-{{- else if .Values.stageBlueGreenApp.defaultPolicy }}
-  syncPolicy: {{ toJson .Values.automatedDefaultSyncPolicy }}
-{{- else if .Values.stageBlueGreenApp.customPolicy }}
-  syncPolicy: {{ toJson .Values.automatedCustomSyncPolicy }}
-{{- end }}
+  syncPolicy:
+    syncOptions:
+        - CreateNamespace=true
+    automated:
+      selfHeal: true
+      prune: true
