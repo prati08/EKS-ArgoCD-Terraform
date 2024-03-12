@@ -4,7 +4,9 @@ metadata:
   name: argo-cd
   namespace: as-infra
   labels:
-    app.kubernetes.io/managed-by: Helm  
+    app.kubernetes.io/managed-by: Helm
+  annotations:
+    argocd.argoproj.io/sync-wave: "-3"
 spec:
   project: default
   source:
