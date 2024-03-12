@@ -13,3 +13,9 @@ spec:
   destination:
     server: https://kubernetes.default.svc
     namespace: as-infra
+  syncPolicy:
+  automated:
+    prune: true
+    selfHeal: true
+  syncOptions:
+    - CreateNamespace=false
