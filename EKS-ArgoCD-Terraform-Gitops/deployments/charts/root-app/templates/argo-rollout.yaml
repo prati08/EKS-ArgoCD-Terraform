@@ -2,10 +2,13 @@ apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
   name: argo-rollouts
+  namespace: as-infra
+  labels:
+    app.kubernetes.io/managed-by: Helm  
+  annotations:
+    argocd.argoproj.io/hook: Presync
   finalizers:
   - resources-finalizer.argocd.argoproj.io
-  annotations:
-    argocd.argoproj.io/sync-wave: "-2"
 spec:
   project: default
   source:
