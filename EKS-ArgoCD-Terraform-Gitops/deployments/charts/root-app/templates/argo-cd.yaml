@@ -2,9 +2,6 @@ apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
   name: argo-cd
-  namespace: as-infra
-  labels:
-    app.kubernetes.io/managed-by: Helm
   annotations:
     argocd.argoproj.io/hook: PreSync
 spec:
@@ -16,9 +13,3 @@ spec:
   destination:
     server: https://kubernetes.default.svc
     namespace: as-infra
-  syncPolicy:
-    syncOptions:
-        - CreateNamespace=false
-    automated:
-      selfHeal: true
-      prune: false
