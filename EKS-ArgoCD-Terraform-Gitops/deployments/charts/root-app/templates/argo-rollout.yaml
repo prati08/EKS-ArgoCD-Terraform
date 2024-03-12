@@ -18,11 +18,9 @@ spec:
   destination:
     server: https://kubernetes.default.svc
     namespace: argocd
-
-{{- if .Values.rootApp.noSyncPolicy }}
-  syncPolicy: null
-{{- else if .Values.rootApp.defaultPolicy }}
-  syncPolicy: {{ toJson .Values.automatedDefaultSyncPolicy }}
-{{- else if .Values.rootApp.customPolicy }}
-  syncPolicy: {{ toJson .Values.automatedCustomSyncPolicy }}
-{{- end }}
+  syncPolicy:
+  automated:
+    prune: true
+    selfHeal: true
+  syncOptions:
+    - CreateNamespace=true
