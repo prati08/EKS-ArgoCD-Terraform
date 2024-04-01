@@ -9,15 +9,15 @@ spec:
   project: default
   source:
     repoURL: https://github.com/prati08/EKS-ArgoCD-Terraform.git
-    path: EKS-ArgoCD-Terraform-Gitops/deployments/charts/root-app/
-    targetRevision: HEAD
+    path: EKS-ArgoCD-Terraform-Gitops-Service/deployments/charts/test
+    targetRevision: main
   destination:
     server: https://kubernetes.default.svc
-    namespace: argocd
+    namespace: testv1
   syncPolicy:
     automated:
       prune: true
       selfHeal: true
     syncOptions:
       - CreateNamespace=true
-      - DeleteNamespace=true
+      - DeleteNamespace=true 
